@@ -20,12 +20,12 @@ import Data.StrMap as StrMap
 import AWS.Request as Request
 import AWS.Request.Types as Types
 
-serviceName = "MarketplaceEntitlementService" :: String
-
 
 -- | <p>GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier or product dimensions.</p>
 getEntitlements :: forall eff. GetEntitlementsRequest -> Aff (exception :: EXCEPTION | eff) GetEntitlementsResult
-getEntitlements = Request.request serviceName "getEntitlements" 
+getEntitlements = Request.request service method  where
+    service = Request.ServiceName "MarketplaceEntitlementService"
+    method = Request.MethodName "getEntitlements"
 
 
 -- | <p>An entitlement represents capacity in a product owned by the customer. For example, a customer might own some number of users or seats in an SaaS application or some amount of data capacity in a multi-tenant database.</p>
