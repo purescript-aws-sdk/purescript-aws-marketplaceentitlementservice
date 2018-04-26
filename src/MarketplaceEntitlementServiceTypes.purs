@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -20,11 +19,11 @@ options = defaultOptions { unwrapSingleConstructors = true }
 
 -- | <p>An entitlement represents capacity in a product owned by the customer. For example, a customer might own some number of users or seats in an SaaS application or some amount of data capacity in a multi-tenant database.</p>
 newtype Entitlement = Entitlement 
-  { "ProductCode" :: NullOrUndefined (ProductCode)
-  , "Dimension" :: NullOrUndefined (NonEmptyString)
-  , "CustomerIdentifier" :: NullOrUndefined (NonEmptyString)
-  , "Value" :: NullOrUndefined (EntitlementValue)
-  , "ExpirationDate" :: NullOrUndefined (Types.Timestamp)
+  { "ProductCode" :: Maybe (ProductCode)
+  , "Dimension" :: Maybe (NonEmptyString)
+  , "CustomerIdentifier" :: Maybe (NonEmptyString)
+  , "Value" :: Maybe (EntitlementValue)
+  , "ExpirationDate" :: Maybe (Types.Timestamp)
   }
 derive instance newtypeEntitlement :: Newtype Entitlement _
 derive instance repGenericEntitlement :: Generic Entitlement _
@@ -34,12 +33,12 @@ instance encodeEntitlement :: Encode Entitlement where encode = genericEncode op
 
 -- | Constructs Entitlement from required parameters
 newEntitlement :: Entitlement
-newEntitlement  = Entitlement { "CustomerIdentifier": (NullOrUndefined Nothing), "Dimension": (NullOrUndefined Nothing), "ExpirationDate": (NullOrUndefined Nothing), "ProductCode": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newEntitlement  = Entitlement { "CustomerIdentifier": Nothing, "Dimension": Nothing, "ExpirationDate": Nothing, "ProductCode": Nothing, "Value": Nothing }
 
 -- | Constructs Entitlement's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEntitlement' :: ( { "ProductCode" :: NullOrUndefined (ProductCode) , "Dimension" :: NullOrUndefined (NonEmptyString) , "CustomerIdentifier" :: NullOrUndefined (NonEmptyString) , "Value" :: NullOrUndefined (EntitlementValue) , "ExpirationDate" :: NullOrUndefined (Types.Timestamp) } -> {"ProductCode" :: NullOrUndefined (ProductCode) , "Dimension" :: NullOrUndefined (NonEmptyString) , "CustomerIdentifier" :: NullOrUndefined (NonEmptyString) , "Value" :: NullOrUndefined (EntitlementValue) , "ExpirationDate" :: NullOrUndefined (Types.Timestamp) } ) -> Entitlement
-newEntitlement'  customize = (Entitlement <<< customize) { "CustomerIdentifier": (NullOrUndefined Nothing), "Dimension": (NullOrUndefined Nothing), "ExpirationDate": (NullOrUndefined Nothing), "ProductCode": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newEntitlement' :: ( { "ProductCode" :: Maybe (ProductCode) , "Dimension" :: Maybe (NonEmptyString) , "CustomerIdentifier" :: Maybe (NonEmptyString) , "Value" :: Maybe (EntitlementValue) , "ExpirationDate" :: Maybe (Types.Timestamp) } -> {"ProductCode" :: Maybe (ProductCode) , "Dimension" :: Maybe (NonEmptyString) , "CustomerIdentifier" :: Maybe (NonEmptyString) , "Value" :: Maybe (EntitlementValue) , "ExpirationDate" :: Maybe (Types.Timestamp) } ) -> Entitlement
+newEntitlement'  customize = (Entitlement <<< customize) { "CustomerIdentifier": Nothing, "Dimension": Nothing, "ExpirationDate": Nothing, "ProductCode": Nothing, "Value": Nothing }
 
 
 
@@ -54,10 +53,10 @@ instance encodeEntitlementList :: Encode EntitlementList where encode = genericE
 
 -- | <p>The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.</p>
 newtype EntitlementValue = EntitlementValue 
-  { "IntegerValue" :: NullOrUndefined (Int)
-  , "DoubleValue" :: NullOrUndefined (Number)
-  , "BooleanValue" :: NullOrUndefined (Boolean)
-  , "StringValue" :: NullOrUndefined (String)
+  { "IntegerValue" :: Maybe (Int)
+  , "DoubleValue" :: Maybe (Number)
+  , "BooleanValue" :: Maybe (Boolean)
+  , "StringValue" :: Maybe (String)
   }
 derive instance newtypeEntitlementValue :: Newtype EntitlementValue _
 derive instance repGenericEntitlementValue :: Generic EntitlementValue _
@@ -67,12 +66,12 @@ instance encodeEntitlementValue :: Encode EntitlementValue where encode = generi
 
 -- | Constructs EntitlementValue from required parameters
 newEntitlementValue :: EntitlementValue
-newEntitlementValue  = EntitlementValue { "BooleanValue": (NullOrUndefined Nothing), "DoubleValue": (NullOrUndefined Nothing), "IntegerValue": (NullOrUndefined Nothing), "StringValue": (NullOrUndefined Nothing) }
+newEntitlementValue  = EntitlementValue { "BooleanValue": Nothing, "DoubleValue": Nothing, "IntegerValue": Nothing, "StringValue": Nothing }
 
 -- | Constructs EntitlementValue's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEntitlementValue' :: ( { "IntegerValue" :: NullOrUndefined (Int) , "DoubleValue" :: NullOrUndefined (Number) , "BooleanValue" :: NullOrUndefined (Boolean) , "StringValue" :: NullOrUndefined (String) } -> {"IntegerValue" :: NullOrUndefined (Int) , "DoubleValue" :: NullOrUndefined (Number) , "BooleanValue" :: NullOrUndefined (Boolean) , "StringValue" :: NullOrUndefined (String) } ) -> EntitlementValue
-newEntitlementValue'  customize = (EntitlementValue <<< customize) { "BooleanValue": (NullOrUndefined Nothing), "DoubleValue": (NullOrUndefined Nothing), "IntegerValue": (NullOrUndefined Nothing), "StringValue": (NullOrUndefined Nothing) }
+newEntitlementValue' :: ( { "IntegerValue" :: Maybe (Int) , "DoubleValue" :: Maybe (Number) , "BooleanValue" :: Maybe (Boolean) , "StringValue" :: Maybe (String) } -> {"IntegerValue" :: Maybe (Int) , "DoubleValue" :: Maybe (Number) , "BooleanValue" :: Maybe (Boolean) , "StringValue" :: Maybe (String) } ) -> EntitlementValue
+newEntitlementValue'  customize = (EntitlementValue <<< customize) { "BooleanValue": Nothing, "DoubleValue": Nothing, "IntegerValue": Nothing, "StringValue": Nothing }
 
 
 
@@ -124,9 +123,9 @@ instance encodeGetEntitlementFilters :: Encode GetEntitlementFilters where encod
 -- | <p>The GetEntitlementsRequest contains parameters for the GetEntitlements operation.</p>
 newtype GetEntitlementsRequest = GetEntitlementsRequest 
   { "ProductCode" :: (ProductCode)
-  , "Filter" :: NullOrUndefined (GetEntitlementFilters)
-  , "NextToken" :: NullOrUndefined (NonEmptyString)
-  , "MaxResults" :: NullOrUndefined (Int)
+  , "Filter" :: Maybe (GetEntitlementFilters)
+  , "NextToken" :: Maybe (NonEmptyString)
+  , "MaxResults" :: Maybe (Int)
   }
 derive instance newtypeGetEntitlementsRequest :: Newtype GetEntitlementsRequest _
 derive instance repGenericGetEntitlementsRequest :: Generic GetEntitlementsRequest _
@@ -136,19 +135,19 @@ instance encodeGetEntitlementsRequest :: Encode GetEntitlementsRequest where enc
 
 -- | Constructs GetEntitlementsRequest from required parameters
 newGetEntitlementsRequest :: ProductCode -> GetEntitlementsRequest
-newGetEntitlementsRequest _ProductCode = GetEntitlementsRequest { "ProductCode": _ProductCode, "Filter": (NullOrUndefined Nothing), "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetEntitlementsRequest _ProductCode = GetEntitlementsRequest { "ProductCode": _ProductCode, "Filter": Nothing, "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs GetEntitlementsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetEntitlementsRequest' :: ProductCode -> ( { "ProductCode" :: (ProductCode) , "Filter" :: NullOrUndefined (GetEntitlementFilters) , "NextToken" :: NullOrUndefined (NonEmptyString) , "MaxResults" :: NullOrUndefined (Int) } -> {"ProductCode" :: (ProductCode) , "Filter" :: NullOrUndefined (GetEntitlementFilters) , "NextToken" :: NullOrUndefined (NonEmptyString) , "MaxResults" :: NullOrUndefined (Int) } ) -> GetEntitlementsRequest
-newGetEntitlementsRequest' _ProductCode customize = (GetEntitlementsRequest <<< customize) { "ProductCode": _ProductCode, "Filter": (NullOrUndefined Nothing), "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetEntitlementsRequest' :: ProductCode -> ( { "ProductCode" :: (ProductCode) , "Filter" :: Maybe (GetEntitlementFilters) , "NextToken" :: Maybe (NonEmptyString) , "MaxResults" :: Maybe (Int) } -> {"ProductCode" :: (ProductCode) , "Filter" :: Maybe (GetEntitlementFilters) , "NextToken" :: Maybe (NonEmptyString) , "MaxResults" :: Maybe (Int) } ) -> GetEntitlementsRequest
+newGetEntitlementsRequest' _ProductCode customize = (GetEntitlementsRequest <<< customize) { "ProductCode": _ProductCode, "Filter": Nothing, "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p>The GetEntitlementsRequest contains results from the GetEntitlements operation.</p>
 newtype GetEntitlementsResult = GetEntitlementsResult 
-  { "Entitlements" :: NullOrUndefined (EntitlementList)
-  , "NextToken" :: NullOrUndefined (NonEmptyString)
+  { "Entitlements" :: Maybe (EntitlementList)
+  , "NextToken" :: Maybe (NonEmptyString)
   }
 derive instance newtypeGetEntitlementsResult :: Newtype GetEntitlementsResult _
 derive instance repGenericGetEntitlementsResult :: Generic GetEntitlementsResult _
@@ -158,18 +157,18 @@ instance encodeGetEntitlementsResult :: Encode GetEntitlementsResult where encod
 
 -- | Constructs GetEntitlementsResult from required parameters
 newGetEntitlementsResult :: GetEntitlementsResult
-newGetEntitlementsResult  = GetEntitlementsResult { "Entitlements": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetEntitlementsResult  = GetEntitlementsResult { "Entitlements": Nothing, "NextToken": Nothing }
 
 -- | Constructs GetEntitlementsResult's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetEntitlementsResult' :: ( { "Entitlements" :: NullOrUndefined (EntitlementList) , "NextToken" :: NullOrUndefined (NonEmptyString) } -> {"Entitlements" :: NullOrUndefined (EntitlementList) , "NextToken" :: NullOrUndefined (NonEmptyString) } ) -> GetEntitlementsResult
-newGetEntitlementsResult'  customize = (GetEntitlementsResult <<< customize) { "Entitlements": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetEntitlementsResult' :: ( { "Entitlements" :: Maybe (EntitlementList) , "NextToken" :: Maybe (NonEmptyString) } -> {"Entitlements" :: Maybe (EntitlementList) , "NextToken" :: Maybe (NonEmptyString) } ) -> GetEntitlementsResult
+newGetEntitlementsResult'  customize = (GetEntitlementsResult <<< customize) { "Entitlements": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
 newtype InternalServiceErrorException = InternalServiceErrorException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeInternalServiceErrorException :: Newtype InternalServiceErrorException _
 derive instance repGenericInternalServiceErrorException :: Generic InternalServiceErrorException _
@@ -179,18 +178,18 @@ instance encodeInternalServiceErrorException :: Encode InternalServiceErrorExcep
 
 -- | Constructs InternalServiceErrorException from required parameters
 newInternalServiceErrorException :: InternalServiceErrorException
-newInternalServiceErrorException  = InternalServiceErrorException { "message": (NullOrUndefined Nothing) }
+newInternalServiceErrorException  = InternalServiceErrorException { "message": Nothing }
 
 -- | Constructs InternalServiceErrorException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInternalServiceErrorException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> InternalServiceErrorException
-newInternalServiceErrorException'  customize = (InternalServiceErrorException <<< customize) { "message": (NullOrUndefined Nothing) }
+newInternalServiceErrorException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> InternalServiceErrorException
+newInternalServiceErrorException'  customize = (InternalServiceErrorException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>One or more parameters in your request was invalid.</p>
 newtype InvalidParameterException = InvalidParameterException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 derive instance repGenericInvalidParameterException :: Generic InvalidParameterException _
@@ -200,12 +199,12 @@ instance encodeInvalidParameterException :: Encode InvalidParameterException whe
 
 -- | Constructs InvalidParameterException from required parameters
 newInvalidParameterException :: InvalidParameterException
-newInvalidParameterException  = InvalidParameterException { "message": (NullOrUndefined Nothing) }
+newInvalidParameterException  = InvalidParameterException { "message": Nothing }
 
 -- | Constructs InvalidParameterException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidParameterException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> InvalidParameterException
-newInvalidParameterException'  customize = (InvalidParameterException <<< customize) { "message": (NullOrUndefined Nothing) }
+newInvalidParameterException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> InvalidParameterException
+newInvalidParameterException'  customize = (InvalidParameterException <<< customize) { "message": Nothing }
 
 
 
@@ -229,7 +228,7 @@ instance encodeProductCode :: Encode ProductCode where encode = genericEncode op
 
 -- | <p>The calls to the GetEntitlements API are throttled.</p>
 newtype ThrottlingException = ThrottlingException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeThrottlingException :: Newtype ThrottlingException _
 derive instance repGenericThrottlingException :: Generic ThrottlingException _
@@ -239,10 +238,10 @@ instance encodeThrottlingException :: Encode ThrottlingException where encode = 
 
 -- | Constructs ThrottlingException from required parameters
 newThrottlingException :: ThrottlingException
-newThrottlingException  = ThrottlingException { "message": (NullOrUndefined Nothing) }
+newThrottlingException  = ThrottlingException { "message": Nothing }
 
 -- | Constructs ThrottlingException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newThrottlingException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ThrottlingException
-newThrottlingException'  customize = (ThrottlingException <<< customize) { "message": (NullOrUndefined Nothing) }
+newThrottlingException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ThrottlingException
+newThrottlingException'  customize = (ThrottlingException <<< customize) { "message": Nothing }
 

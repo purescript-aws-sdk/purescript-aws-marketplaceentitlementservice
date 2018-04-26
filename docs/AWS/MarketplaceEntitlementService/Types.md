@@ -10,7 +10,7 @@ options :: Options
 
 ``` purescript
 newtype Entitlement
-  = Entitlement { "ProductCode" :: NullOrUndefined (ProductCode), "Dimension" :: NullOrUndefined (NonEmptyString), "CustomerIdentifier" :: NullOrUndefined (NonEmptyString), "Value" :: NullOrUndefined (EntitlementValue), "ExpirationDate" :: NullOrUndefined (Timestamp) }
+  = Entitlement { "ProductCode" :: Maybe (ProductCode), "Dimension" :: Maybe (NonEmptyString), "CustomerIdentifier" :: Maybe (NonEmptyString), "Value" :: Maybe (EntitlementValue), "ExpirationDate" :: Maybe (Timestamp) }
 ```
 
 <p>An entitlement represents capacity in a product owned by the customer. For example, a customer might own some number of users or seats in an SaaS application or some amount of data capacity in a multi-tenant database.</p>
@@ -35,7 +35,7 @@ Constructs Entitlement from required parameters
 #### `newEntitlement'`
 
 ``` purescript
-newEntitlement' :: ({ "ProductCode" :: NullOrUndefined (ProductCode), "Dimension" :: NullOrUndefined (NonEmptyString), "CustomerIdentifier" :: NullOrUndefined (NonEmptyString), "Value" :: NullOrUndefined (EntitlementValue), "ExpirationDate" :: NullOrUndefined (Timestamp) } -> { "ProductCode" :: NullOrUndefined (ProductCode), "Dimension" :: NullOrUndefined (NonEmptyString), "CustomerIdentifier" :: NullOrUndefined (NonEmptyString), "Value" :: NullOrUndefined (EntitlementValue), "ExpirationDate" :: NullOrUndefined (Timestamp) }) -> Entitlement
+newEntitlement' :: ({ "ProductCode" :: Maybe (ProductCode), "Dimension" :: Maybe (NonEmptyString), "CustomerIdentifier" :: Maybe (NonEmptyString), "Value" :: Maybe (EntitlementValue), "ExpirationDate" :: Maybe (Timestamp) } -> { "ProductCode" :: Maybe (ProductCode), "Dimension" :: Maybe (NonEmptyString), "CustomerIdentifier" :: Maybe (NonEmptyString), "Value" :: Maybe (EntitlementValue), "ExpirationDate" :: Maybe (Timestamp) }) -> Entitlement
 ```
 
 Constructs Entitlement's fields from required parameters
@@ -60,7 +60,7 @@ Encode EntitlementList
 
 ``` purescript
 newtype EntitlementValue
-  = EntitlementValue { "IntegerValue" :: NullOrUndefined (Int), "DoubleValue" :: NullOrUndefined (Number), "BooleanValue" :: NullOrUndefined (Boolean), "StringValue" :: NullOrUndefined (String) }
+  = EntitlementValue { "IntegerValue" :: Maybe (Int), "DoubleValue" :: Maybe (Number), "BooleanValue" :: Maybe (Boolean), "StringValue" :: Maybe (String) }
 ```
 
 <p>The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.</p>
@@ -85,7 +85,7 @@ Constructs EntitlementValue from required parameters
 #### `newEntitlementValue'`
 
 ``` purescript
-newEntitlementValue' :: ({ "IntegerValue" :: NullOrUndefined (Int), "DoubleValue" :: NullOrUndefined (Number), "BooleanValue" :: NullOrUndefined (Boolean), "StringValue" :: NullOrUndefined (String) } -> { "IntegerValue" :: NullOrUndefined (Int), "DoubleValue" :: NullOrUndefined (Number), "BooleanValue" :: NullOrUndefined (Boolean), "StringValue" :: NullOrUndefined (String) }) -> EntitlementValue
+newEntitlementValue' :: ({ "IntegerValue" :: Maybe (Int), "DoubleValue" :: Maybe (Number), "BooleanValue" :: Maybe (Boolean), "StringValue" :: Maybe (String) } -> { "IntegerValue" :: Maybe (Int), "DoubleValue" :: Maybe (Number), "BooleanValue" :: Maybe (Boolean), "StringValue" :: Maybe (String) }) -> EntitlementValue
 ```
 
 Constructs EntitlementValue's fields from required parameters
@@ -174,7 +174,7 @@ Encode GetEntitlementFilters
 
 ``` purescript
 newtype GetEntitlementsRequest
-  = GetEntitlementsRequest { "ProductCode" :: ProductCode, "Filter" :: NullOrUndefined (GetEntitlementFilters), "NextToken" :: NullOrUndefined (NonEmptyString), "MaxResults" :: NullOrUndefined (Int) }
+  = GetEntitlementsRequest { "ProductCode" :: ProductCode, "Filter" :: Maybe (GetEntitlementFilters), "NextToken" :: Maybe (NonEmptyString), "MaxResults" :: Maybe (Int) }
 ```
 
 <p>The GetEntitlementsRequest contains parameters for the GetEntitlements operation.</p>
@@ -199,7 +199,7 @@ Constructs GetEntitlementsRequest from required parameters
 #### `newGetEntitlementsRequest'`
 
 ``` purescript
-newGetEntitlementsRequest' :: ProductCode -> ({ "ProductCode" :: ProductCode, "Filter" :: NullOrUndefined (GetEntitlementFilters), "NextToken" :: NullOrUndefined (NonEmptyString), "MaxResults" :: NullOrUndefined (Int) } -> { "ProductCode" :: ProductCode, "Filter" :: NullOrUndefined (GetEntitlementFilters), "NextToken" :: NullOrUndefined (NonEmptyString), "MaxResults" :: NullOrUndefined (Int) }) -> GetEntitlementsRequest
+newGetEntitlementsRequest' :: ProductCode -> ({ "ProductCode" :: ProductCode, "Filter" :: Maybe (GetEntitlementFilters), "NextToken" :: Maybe (NonEmptyString), "MaxResults" :: Maybe (Int) } -> { "ProductCode" :: ProductCode, "Filter" :: Maybe (GetEntitlementFilters), "NextToken" :: Maybe (NonEmptyString), "MaxResults" :: Maybe (Int) }) -> GetEntitlementsRequest
 ```
 
 Constructs GetEntitlementsRequest's fields from required parameters
@@ -208,7 +208,7 @@ Constructs GetEntitlementsRequest's fields from required parameters
 
 ``` purescript
 newtype GetEntitlementsResult
-  = GetEntitlementsResult { "Entitlements" :: NullOrUndefined (EntitlementList), "NextToken" :: NullOrUndefined (NonEmptyString) }
+  = GetEntitlementsResult { "Entitlements" :: Maybe (EntitlementList), "NextToken" :: Maybe (NonEmptyString) }
 ```
 
 <p>The GetEntitlementsRequest contains results from the GetEntitlements operation.</p>
@@ -233,7 +233,7 @@ Constructs GetEntitlementsResult from required parameters
 #### `newGetEntitlementsResult'`
 
 ``` purescript
-newGetEntitlementsResult' :: ({ "Entitlements" :: NullOrUndefined (EntitlementList), "NextToken" :: NullOrUndefined (NonEmptyString) } -> { "Entitlements" :: NullOrUndefined (EntitlementList), "NextToken" :: NullOrUndefined (NonEmptyString) }) -> GetEntitlementsResult
+newGetEntitlementsResult' :: ({ "Entitlements" :: Maybe (EntitlementList), "NextToken" :: Maybe (NonEmptyString) } -> { "Entitlements" :: Maybe (EntitlementList), "NextToken" :: Maybe (NonEmptyString) }) -> GetEntitlementsResult
 ```
 
 Constructs GetEntitlementsResult's fields from required parameters
@@ -242,7 +242,7 @@ Constructs GetEntitlementsResult's fields from required parameters
 
 ``` purescript
 newtype InternalServiceErrorException
-  = InternalServiceErrorException { message :: NullOrUndefined (ErrorMessage) }
+  = InternalServiceErrorException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
@@ -267,7 +267,7 @@ Constructs InternalServiceErrorException from required parameters
 #### `newInternalServiceErrorException'`
 
 ``` purescript
-newInternalServiceErrorException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> InternalServiceErrorException
+newInternalServiceErrorException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> InternalServiceErrorException
 ```
 
 Constructs InternalServiceErrorException's fields from required parameters
@@ -276,7 +276,7 @@ Constructs InternalServiceErrorException's fields from required parameters
 
 ``` purescript
 newtype InvalidParameterException
-  = InvalidParameterException { message :: NullOrUndefined (ErrorMessage) }
+  = InvalidParameterException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>One or more parameters in your request was invalid.</p>
@@ -301,7 +301,7 @@ Constructs InvalidParameterException from required parameters
 #### `newInvalidParameterException'`
 
 ``` purescript
-newInvalidParameterException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> InvalidParameterException
+newInvalidParameterException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> InvalidParameterException
 ```
 
 Constructs InvalidParameterException's fields from required parameters
@@ -342,7 +342,7 @@ Encode ProductCode
 
 ``` purescript
 newtype ThrottlingException
-  = ThrottlingException { message :: NullOrUndefined (ErrorMessage) }
+  = ThrottlingException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>The calls to the GetEntitlements API are throttled.</p>
@@ -367,7 +367,7 @@ Constructs ThrottlingException from required parameters
 #### `newThrottlingException'`
 
 ``` purescript
-newThrottlingException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ThrottlingException
+newThrottlingException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ThrottlingException
 ```
 
 Constructs ThrottlingException's fields from required parameters
